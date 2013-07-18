@@ -21,7 +21,7 @@ while i<len(configfiles): #for every file...
 	f = open(configfiles[i])
 
 	##write url to outfile
-	with open('outfile.html', 'a') as outfile:
+	with open('bookmarks.html', 'a') as outfile:
 
 		## Appends html doctype & headers
 		if not html: 
@@ -36,6 +36,8 @@ while i<len(configfiles): #for every file...
 				icon = line[9:]
 			if "[InternetShortcut]\r\n" in line:
 				url = next(f)
+				urlstart = url.find("http")
+				url = url[start:]
 				outlist.append(url.strip("\r\n"))
 
 			title = str(f)
